@@ -29,11 +29,8 @@ axs[0,0].set(ylabel='HHL')
 #  Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
 # TODO fix y axis lables, add --k lines, add data after 10^3, fix lower label
 x = pums_dataframe.HINCP.dropna().value_counts()
-axs[0,1].set_title('Distribution of Household Income')
-axs[0,1].hist(x,bins=np.logspace(1,7),facecolor='green',alpha=.50)
-axs[0,1].set(xlabel='Household Income($)- Log Scaled',ylabel='Density')
-axs[0,1].set_xscale("log")
-axs[0,1].grid(linestyle='dotted')
+axs[0,1].set_title('Distribution of Household Income', fontsize=8)
+
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
 # TODO fix x-axis and y-axis lables, display correct information
