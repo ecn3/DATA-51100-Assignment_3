@@ -18,9 +18,6 @@ pums_dataframe = pd.read_csv('ss13hil.csv')
 # Create a figure with 2x2 subplots
 fig, axs = plt.subplots(2, 2)
 
-# Set size of figure for display
-fig.set_size_inches(20,20)
-
 # Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 # TODO fix circle so not oblong
 pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
@@ -44,8 +41,11 @@ axs[1,0].set_title('Vehicles Available in Households')
 axs[1,0].bar(pums_dataframe.groupby('VEH').WGTP.mean()/1000,pums_dataframe.VEH.value_counts().dropna(),facecolor='red')
 axs[1,0].set(xlabel='# of Vehicles',ylabel='Thousands of Households')
 
-# TODO Lower Right Subplot - Scatter plot of TAXP against VALP
-# > convert TAXP into numeric values, use lower bounds interval, Use WGTP as the size of each marker, 'o' as marker type, and MRGP as the color value, add colorbar
+# Lower Right Subplot - Scatter plot of TAXP against VALP
+# TODO fix x and y axis, fix saturation, add legend, add right label
+axs[1,1].set_title('Property Taxes vs Property Values')
+axs[1,1].scatter(pums_dataframe.VALP, pums_dataframe.TAXP)
+axs[1,1].set(xlabel='Property Values($)',ylabel='Taxes')
 
 # TODO Display figure
 plt.show()
