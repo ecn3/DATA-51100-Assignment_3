@@ -27,7 +27,7 @@ axs[0,0].legend(pie_key,loc="upper left")
 axs[0,0].set(ylabel='HHL')
 
 #  Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
-# TODO fix y axis lables, add --k lines, add data after 10^3
+# TODO fix y axis lables, add --k lines, add data after 10^3, fix lower label
 x = pums_dataframe.HINCP.dropna().value_counts()
 axs[0,1].set_title('Distribution of Household Income')
 axs[0,1].hist(x,bins=np.logspace(1,7),facecolor='green',alpha=.50)
@@ -42,7 +42,7 @@ axs[1,0].bar(pums_dataframe.groupby('VEH').WGTP.mean()/1000,pums_dataframe.VEH.v
 axs[1,0].set(xlabel='# of Vehicles',ylabel='Thousands of Households')
 
 # Lower Right Subplot - Scatter plot of TAXP against VALP
-# TODO fix x and y axis, fix saturation, add legend, add right label
+# TODO fix x and y axis, fix saturation, add color bar, add right label, fix upper label, fix data
 axs[1,1].set_title('Property Taxes vs Property Values')
 axs[1,1].scatter(pums_dataframe.VALP, pums_dataframe.TAXP)
 axs[1,1].set(xlabel='Property Values($)',ylabel='Taxes')
@@ -51,4 +51,4 @@ axs[1,1].set(xlabel='Property Values($)',ylabel='Taxes')
 plt.show()
 
 # TODO Save figure to file 'pums.png'
-
+# plt.savefig('pums.png', dpi=None) creates blank file
