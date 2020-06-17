@@ -15,12 +15,19 @@ import numpy as np
 # Load ss13hil.csv into a DATAFRAME
 pums_dataframe = pd.read_csv('ss13hil.csv')
 
-# TODO Create a figure with 2x2 subplots
+# Create a figure with 2x2 subplots
 fig, axs = plt.subplots(2, 2)
-# Tester code to be deleted
-plt.show()
+
+# Set size of figure for display
+fig.set_size_inches(20,16)
+
 # TODO Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 # > No wedge labels, must have legend in upper left corner, correctly rotated
+pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
+axs[0,0].set_title('Household Languages')
+axs[0,0].pie(pums_dataframe.HHL.value_counts().dropna(),startangle=240)
+axs[0,0].legend(pie_key,loc="upper left")
+axs[0,0].set(ylabel='HHL')
 
 # TODO Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
 # > Use log scale on the x-axis with log spaced bins [np.logspace]
@@ -33,6 +40,7 @@ plt.show()
 # > convert TAXP into numeric values, use lower bounds interval, Use WGTP as the size of each marker, 'o' as marker type, and MRGP as the color value, add colorbar
 
 # TODO Display figure
+plt.show()
 
 # TODO Save figure to file 'pums.png'
 
