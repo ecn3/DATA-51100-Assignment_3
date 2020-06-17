@@ -47,7 +47,7 @@ axs[1,1].set_title('Property Taxes vs Property Values')
 axs[1,1].scatter(pums_dataframe.VALP, pums_dataframe.TAXP)
 axs[1,1].set(xlabel='Property Values($)',ylabel='Taxes')
 
-# TODO Display figure
+# Display figure
 plt.show()
 
 # TODO Save figure to file 'pums.png'
