@@ -16,7 +16,9 @@ import numpy as np
 pums_dataframe = pd.read_csv('ss13hil.csv')
 
 # TODO Create a figure with 2x2 subplots
-
+fig, axs = plt.subplots(2, 2)
+# Tester code to be deleted
+plt.show()
 # TODO Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 # > No wedge labels, must have legend in upper left corner, correctly rotated
 
