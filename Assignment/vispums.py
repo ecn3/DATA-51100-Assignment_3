@@ -34,14 +34,14 @@ axs[0,1].set_title('Distribution of Household Income', fontsize=8)
 axs[0,1].set_xlabel('Household Income($)- Log Scaled', fontsize=8)
 # Set the y label
 axs[0,1].set_ylabel('Density', fontsize=8)
-# Get Hist Data
-pums_hist = pums_dataframe.HINCP
-# Plot data
-axs[0,1].hist(pums_hist, bins=np.logspace(1,7),facecolor='green',alpha=.5)
+# Get Data
+pums_hist = pums_dataframe.HINCP.dropna()
+# Create log spaced bins
+bins=np.logspace(1,7)
 # Set x scale
 axs[0,1].set_xscale('log')
-
-
+# Plot data
+axs[0,1].hist(pums_hist,bins,density=True,facecolor='green',alpha=.5)
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
 # Set the title
