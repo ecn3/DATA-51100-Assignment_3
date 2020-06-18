@@ -67,7 +67,8 @@ axs[1,1].set_title('Property Taxes vs Property Values', fontsize=8)
 axs[1,1].set_xlabel('Property Values($)', fontsize=8)
 # Set the y label
 axs[1,1].set_ylabel('Taxes($)', fontsize=8)
-
+# Get data
+pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
 
 # Display figure
 plt.show()
