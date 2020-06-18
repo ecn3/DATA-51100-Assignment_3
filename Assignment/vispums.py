@@ -37,7 +37,7 @@ axs[0,1].set_ylabel('Density', fontsize=8)
 # Get Data
 pums_hist = pums_dataframe.HINCP.dropna()
 # Create log spaced bins
-bins=np.logspace(1,7)
+bins=np.logspace(1,7,100)
 # Set x scale
 axs[0,1].set_xscale('log')
 # Plot data
