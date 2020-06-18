@@ -44,16 +44,16 @@ axs[0,1].set_xscale('log')
 
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
-# TODO fix x-axis and y-axis lables, display correct information
 # Set the title
 axs[1,0].set_title('Vehicles Available in Households', fontsize=8)
 # Set the x label
 axs[1,0].set_xlabel('# of Vehicles', fontsize=8)
 # Set the y label
 axs[1,0].set_ylabel('Thousands of Households', fontsize=8)
-
-axs[1,0].bar(pums_dataframe.groupby('VEH').WGTP.mean()/1000,pums_dataframe.VEH.value_counts().dropna(),facecolor='red')
-
+# Get data
+pums_bar = pums_dataframe.groupby('VEH')['WGTP'].sum()/1000
+# Display Data
+axs[1,0].bar(pums_bar.index,pums_bar.values,facecolor='red')
 
 # Lower Right Subplot - Scatter plot of TAXP against VALP
 # Me TODO fix x and y axis, fix saturation, add color bar, add right label, fix upper label, fix data
