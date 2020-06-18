@@ -27,13 +27,21 @@ axs[0,0].legend(pie_key,loc="upper left")
 axs[0,0].set(ylabel='HHL')
 
 #  Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
-# Me TODO fix y axis lables, add --k lines, add data after 10^3, fix lower label
+# TODO super impose KDE
 # Set the title
 axs[0,1].set_title('Distribution of Household Income', fontsize=8)
 # Set the x label
 axs[0,1].set_xlabel('Household Income($)- Log Scaled', fontsize=8)
 # Set the y label
 axs[0,1].set_ylabel('Density', fontsize=8)
+# Get Data
+pums_hist = pums_dataframe.HINCP.dropna()
+# Create log spaced bins
+bins=np.logspace(1,7,100)
+# Set x scale
+axs[0,1].set_xscale('log')
+# Plot data
+axs[0,1].hist(pums_hist,bins,density=True,facecolor='green',alpha=.5)
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
 # Set the title
@@ -46,6 +54,7 @@ axs[1,0].set_ylabel('Thousands of Households', fontsize=8)
 pums_bar = pums_dataframe.groupby('VEH')['WGTP'].sum()/1000
 # Display Data
 axs[1,0].bar(pums_bar.index,pums_bar.values,facecolor='red')
+
 
 # Lower Right Subplot - Scatter plot of TAXP against VALP
 # Me TODO fix x and y axis, fix saturation, add color bar, add right label, fix upper label, fix data
