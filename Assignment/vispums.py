@@ -63,6 +63,11 @@ axs[1,0].bar(pums_bar.index,pums_bar.values,facecolor='red')
 # Me TODO fix x and y axis, fix saturation, add color bar, add right label, fix upper label, fix data
 # Set the title
 axs[1,1].set_title('Property Taxes vs Property Values', fontsize=8)
+# Set the x label
+axs[1,1].set_xlabel('Property Values($)', fontsize=8)
+# Set the y label
+axs[1,1].set_ylabel('Taxes($)', fontsize=8)
+
 
 # Display figure
 plt.show()
