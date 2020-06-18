@@ -60,7 +60,7 @@ axs[1,0].bar(pums_bar.index,pums_bar.values,facecolor='red')
 
 
 # Lower Right Subplot - Scatter plot of TAXP against VALP
-# Me TODO fix x and y axis, fix saturation, add color bar, add right label, fix upper label, fix data
+# TODO fix saturation, add color bar, fix data
 # Set the title
 axs[1,1].set_title('Property Taxes vs Property Values', fontsize=8)
 # Set the x label
@@ -69,6 +69,10 @@ axs[1,1].set_xlabel('Property Values($)', fontsize=8)
 axs[1,1].set_ylabel('Taxes($)', fontsize=8)
 # Get data
 pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
+# TODO Convert TAXP using interval
+
+# Graph Data
+axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP)
 
 # Display figure
 plt.show()
