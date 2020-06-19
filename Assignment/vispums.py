@@ -45,7 +45,8 @@ bins=np.logspace(1,7,100)
 axs[0,1].set_xscale('log')
 # Plot data
 axs[0,1].hist(pums_hist,bins,density=True,facecolor='green',alpha=.5)
-# TODO KDE plot superimposed
+# KDE plot superimposed
+pums_hist.plot(kind='kde',ax=axs[0,1], color ='Black',linestyle='--')
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
 # Set the title
@@ -61,7 +62,6 @@ axs[1,0].bar(pums_bar.index,pums_bar.values,facecolor='red')
 
 
 # Lower Right Subplot - Scatter plot of TAXP against VALP
-# TODO fix saturation, fix data
 # Set the title
 axs[1,1].set_title('Property Taxes vs Property Values', fontsize=8)
 # Set the x label
@@ -74,9 +74,9 @@ pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
 
 # Graph Data
 scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP)
-# TODO Add color bar and label
+# Add color bar and label
 cb = plt.colorbar(scatter_data)
-# TODO Set color bar label
+# Set color bar label
 cb.set_label(label='First Mortage Payment(Monthly $)',size=6)
 # Save figure to file 'pums.png'
 plt.savefig('pums.png', dpi=300) 
