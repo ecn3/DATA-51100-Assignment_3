@@ -21,18 +21,19 @@ fig, axs = plt.subplots(2, 2)
 # Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 # TODO fix circle so not oblong
 pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
-axs[0,0].set_title('Household Languages')
+axs[0,0].set_title('Household Languages', fontsize = 8)
 axs[0,0].pie(pums_dataframe.HHL.value_counts().dropna(),startangle=240)
-axs[0,0].legend(pie_key,loc="upper left")
+axs[0,0].legend(pie_key,bbox_to_anchor=(.10,.90), loc="upper left", 
+                          bbox_transform=plt.gcf().transFigure, prop={'size': 4})
 axs[0,0].set(ylabel='HHL')
 
 #  Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
-# Me TODO fix y axis lables, add --k lines, add data after 10^3, fix lower label
+# TODO super impose KDE
 # Set the title
 axs[0,1].set_title('Distribution of Household Income', fontsize=8)
 # Set the x label
 axs[0,1].set_xlabel('Household Income($)- Log Scaled', fontsize=8)
-# Set the y label
+# Set the y labelz
 axs[0,1].set_ylabel('Density', fontsize=8)
 # Get Data
 pums_hist = pums_dataframe.HINCP.dropna()
@@ -60,8 +61,9 @@ axs[1,0].bar(pums_bar.index,pums_bar.values,facecolor='red')
 # Me TODO fix x and y axis, fix saturation, add color bar, add right label, fix upper label, fix data
 
 
-# Display figure
-plt.show()
 
-# TODO Save figure to file 'pums.png'
-# plt.savefig('pums.png', dpi=None) creates blank file
+#Saves the figure
+plt.savefig('pums.png', dpi=300) 
+
+# Displays the figure
+plt.show()
