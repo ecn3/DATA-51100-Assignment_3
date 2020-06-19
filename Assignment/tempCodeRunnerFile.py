@@ -1,1 +1,1 @@
-axs[0,0].legend(pie_key,loc="upper left")
+pums_hist.plot(kind='kde',ax=axs[0,1], color ='Black',linestyle='--')

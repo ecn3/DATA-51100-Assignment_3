@@ -45,7 +45,8 @@ bins=np.logspace(1,7,100)
 axs[0,1].set_xscale('log')
 # Plot data
 axs[0,1].hist(pums_hist,bins,density=True,facecolor='green',alpha=.5)
-# TODO KDE plot superimposed
+# KDE plot superimposed
+pums_hist.plot(kind='kde',ax=axs[0,1], color ='Black',linestyle='--')
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
 # Set the title
