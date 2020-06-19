@@ -24,10 +24,11 @@ fig.subplots_adjust(hspace=0.32)
 # Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 # TODO fix circle so not oblong
 pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
-axs[0,0].set_title('Household Languages')
+axs[0,0].set_title('Household Languages', fontsize=8)
 axs[0,0].pie(pums_dataframe.HHL.value_counts().dropna(),startangle=240)
 axs[0,0].legend(pie_key,loc="upper left")
-axs[0,0].set(ylabel='HHL')
+axs[0,0].set_ylabel('HHL', fontsize=8)
+
 
 #  Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
 # TODO KDE plot superimposed
@@ -72,7 +73,7 @@ pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
 # TODO Convert TAXP using interval
 
 # Graph Data
-axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP)
+axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP)
 
 # Save figure to file 'pums.png'
 plt.savefig('pums.png', dpi=300) 
