@@ -74,8 +74,8 @@ pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
 # Graph Data
 axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP)
 
+# Save figure to file 'pums.png'
+plt.savefig('pums.png', dpi=300) 
+
 # Display figure
 plt.show()
-
-# TODO Save figure to file 'pums.png'
-# plt.savefig('pums.png', dpi=None) creates blank file
