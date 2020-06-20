@@ -79,6 +79,7 @@ for y in range(1,69):
 # Graph Data
 #scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP)
 scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',c=pums_scatter.MRGP)
+axs[1,1].set_xlim(0,1200000)
 # Add color bar and label
 cb = plt.colorbar(scatter_data)
 # Set color bar label
