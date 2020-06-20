@@ -22,13 +22,12 @@ fig, axs = plt.subplots(2, 2)
 fig.subplots_adjust(hspace=0.32)
 
 # Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
-# TODO fix circle so not oblong
 pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
 axs[0,0].set_title('Household Languages', fontsize=8)
-axs[0,0].pie(pums_dataframe.HHL.value_counts().dropna(),startangle=240)
-axs[0,0].legend(pie_key,loc="upper left")
+axs[0,0].pie(pums_dataframe.HHL.value_counts().dropna(),startangle=242)
+axs[0,0].legend(pie_key,loc=2, fontsize=8)
 axs[0,0].set_ylabel('HHL', fontsize=8)
-
+axs[0,0].axis('equal')
 
 #  Upper Right Subplot - Histogram of HINCP Column with KDE plot superimposed
 # Set the title
