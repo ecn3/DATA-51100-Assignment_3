@@ -20,6 +20,7 @@ fig, axs = plt.subplots(2, 2)
 
 # Adjust hspace for proper veiwing
 fig.subplots_adjust(hspace=0.32)
+fig.set_size_inches(24,20)
 
 # Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
@@ -72,16 +73,18 @@ pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
 # Convert TAXP using interval
 taxp_conversions = pd.Series([None, 1,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,
 1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600,2700,2800,2900,3000,3100,3200,3300,
-3400,3500,3600,3700,3800,3900,4000,4100,4200,4300,4400,4500,4600,4700,4800,4900,500,5500,6000,7000,8000,900,10000 ])
+3400,3500,3600,3700,3800,3900,4000,4100,4200,4300,4400,4500,4600,4700,4800,4900,5000,5500,6000,7000,8000,9000,10000 ])
 for y in range(1,69):
-    pums_scatter = pums_scatter.replace(to_replace= y, value= taxp_conversions[y-1])     
+    pums_scatter['TAXP'] = pums_scatter['TAXP'].replace(to_replace= y, value= taxp_conversions[y-1])     
 # Create colormap
 cmap = mpl.colors.LinearSegmentedColormap.from_list("", ["lightblue","white","pink"])
 # Graph Data
-scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP/200, c=pums_scatter.MRGP,cmap=cmap)
+scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP,cmap='seismic',alpha=0.20)
 axs[1,1].set_xlim(0,1200000)
+axs[1,1].set_ylim(0,None)
+axs[1,1].ticklabel_format(style='plain')
 # Add color bar and label
-cb = plt.colorbar(scatter_data)
+cb = plt.colorbar(scatter_data, format='%li')
 # Set color bar label
 cb.set_label(label='First Mortage Payment(Monthly $)',size=6)
 # Save figure to file 'pums.png'
