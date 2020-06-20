@@ -103,7 +103,8 @@ cb = plt.colorbar(scatter_data, format='%li')
 # Set color bar label
 cb.set_label(label='First Mortage Payment(Monthly $)',size=6)
 # Save figure to file 'pums.png'
-plt.savefig('pums.png', dpi=300) 
+fig.set_size_inches(14, 7)
+plt.savefig('pums.png', dpi=100) 
 
 # Display figure
 plt.show()
