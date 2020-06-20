@@ -70,17 +70,33 @@ axs[1,1].set_ylabel('Taxes($)', fontsize=8)
 # Get data
 pums_scatter = pums_dataframe[['TAXP','VALP','WGTP','MRGP']].dropna()
 # Convert TAXP using interval
-taxp_conversions = pd.Series([None, 1,50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000,
-1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600,2700,2800,2900,3000,3100,3200,3300,
-3400,3500,3600,3700,3800,3900,4000,4100,4200,4300,4400,4500,4600,4700,4800,4900,5000,5500,6000,7000,8000,9000,10000 ])
+def get_taxp_mapping_dict():
+    taxp_dict = {}
+    taxp_dict[1] = np.NaN
+    taxp_dict[2] = 1
+    taxp_dict[63]=5500
+    counter = 50
+    for key in range (3,23):
+        taxp_dict[key]=counter
+        counter += 50
+    for key in range (23,63):
+        taxp_dict[key] = counter+50
+        counter += 100
+    counter = counter - 50
+    for key in range (64,69):
+        taxp_dict[key] = counter+1000
+        counter += 1000
+    return taxp_dict
+
+taxp_dict = get_taxp_mapping_dict()
 for y in range(1,69):
-    pums_scatter['TAXP'] = pums_scatter['TAXP'].replace(to_replace= y, value= taxp_conversions[y-1])     
+    pums_scatter['TAXP'] = pums_scatter['TAXP'].replace(to_replace= y, value= taxp_dict[y]) 
+
 # Create colormap
 cmap = mpl.colors.LinearSegmentedColormap.from_list("", ["lightblue","white","pink"])
 # Graph Data
-scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP/10, c=pums_scatter.MRGP,cmap='seismic',alpha=0.20)
+scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP/10, c=pums_scatter.MRGP,cmap='seismic',alpha=0.15)
 axs[1,1].set_xlim(0,1200000)
-
 axs[1,1].ticklabel_format(style='plain')
 # Add color bar and label
 cb = plt.colorbar(scatter_data, format='%li')
