@@ -20,7 +20,6 @@ fig, axs = plt.subplots(2, 2)
 
 # Adjust hspace for proper veiwing
 fig.subplots_adjust(hspace=0.32)
-fig.set_size_inches(24,20)
 
 # Upper Left Subplot - Pie Chart contaning num of household records for the different values of HHL Column
 pie_key=['English','Spanish','Other Indo-European','Asian and Pacific Island languages','Other']
@@ -46,7 +45,7 @@ axs[0,1].set_xscale('log')
 # Plot data
 axs[0,1].hist(pums_hist,bins,density=True,facecolor='green',alpha=.5)
 # KDE plot superimposed
-pums_hist.plot(kind='kde',ax=axs[0,1], color ='Black',linestyle='--')
+pums_hist.plot(kind='kde',ax=axs[0,1], color ='k',linestyle='--')
 
 # Lower Left Subplot - Bar Chart of number of households in thousands for each VEH value[drop NaN]
 # Set the title
@@ -79,9 +78,9 @@ for y in range(1,69):
 # Create colormap
 cmap = mpl.colors.LinearSegmentedColormap.from_list("", ["lightblue","white","pink"])
 # Graph Data
-scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP,cmap='seismic',alpha=0.20)
+scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP/10, c=pums_scatter.MRGP,cmap='seismic',alpha=0.20)
 axs[1,1].set_xlim(0,1200000)
-axs[1,1].set_ylim(0,None)
+
 axs[1,1].ticklabel_format(style='plain')
 # Add color bar and label
 cb = plt.colorbar(scatter_data, format='%li')
