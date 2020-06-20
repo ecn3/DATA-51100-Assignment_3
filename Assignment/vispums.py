@@ -78,11 +78,11 @@ for y in range(1,69):
     pums_scatter = pums_scatter.replace(to_replace= y, value= taxp_conversions[y-1])           
 # Graph Data
 #scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP)
-scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP)
+scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',c=pums_scatter.MRGP)
 # Add color bar and label
-#cb = plt.colorbar(scatter_data)
+cb = plt.colorbar(scatter_data)
 # Set color bar label
-#cb.set_label(label='First Mortage Payment(Monthly $)',size=6)
+cb.set_label(label='First Mortage Payment(Monthly $)',size=6)
 # Save figure to file 'pums.png'
 plt.savefig('pums.png', dpi=300) 
 
