@@ -77,8 +77,7 @@ taxp_conversions = pd.Series([None, 1,50,100,150,200,250,300,350,400,450,500,550
 for y in range(1,69):
     pums_scatter = pums_scatter.replace(to_replace= y, value= taxp_conversions[y-1])           
 # Graph Data
-#scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP, c=pums_scatter.MRGP)
-scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',c=pums_scatter.MRGP)
+scatter_data = axs[1,1].scatter(pums_scatter.VALP,pums_scatter.TAXP,marker='o',s=pums_scatter.WGTP/400, c=pums_scatter.MRGP)
 axs[1,1].set_xlim(0,1200000)
 # Add color bar and label
 cb = plt.colorbar(scatter_data)
